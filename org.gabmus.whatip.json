@@ -2,14 +2,15 @@
     "app-id": "org.gabmus.whatip",
     "command": "whatip",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.36",
+    "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
         "--socket=x11",
         "--share=network",
-        "--socket=wayland"
+        "--socket=wayland",
+        "--socket=system-bus"
     ],
     "modules": [
         {
@@ -21,8 +22,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://source.puri.sm/Librem5/libhandy",
-                    "tag": "v0.0.13"
+                    "url": "https://gitlab.gnome.org/GNOME/libhandy",
+                    "tag": "1.0.0"
                 }
             ]
         },
@@ -245,6 +246,55 @@
             ]
         },
         {
+            "name": "libdaemon",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--prefix=/app"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.0pointer.net/libdaemon.git",
+                    "commit": "9fcc28e0e8f84968d1fb8b6d544a42efb13803ec"
+                }
+            ]
+        },
+        {
+            "name": "libevent",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--prefix=/app"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libevent/libevent",
+                    "tag": "release-2.1.12-stable"
+                }
+            ]
+        },
+        {
+            "name": "avahi",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--prefix=/app",
+                "--with-distro=none",
+                "--disable-gtk3",
+                "--disable-mono",
+                "--disable-qt5",
+                "--disable-manpages",
+                "--disable-python",
+                "--with-systemdsystemunitdir=no"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/lathiat/avahi",
+                    "tag": "v0.8"
+                }
+            ]
+        },
+        {
             "name": "whatip",
             "buildsystem": "meson",
             "builddir": true,
@@ -255,10 +305,9 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
-                    "tag": "0.1.2"
+                    "tag": "0.2"
                 }
             ]
         }
     ]
 }
-
