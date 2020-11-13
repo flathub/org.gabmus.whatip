@@ -305,7 +305,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
-                    "tag": "0.2"
+                    "tag": "0.3"
                 }
             ]
         }
