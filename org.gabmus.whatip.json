@@ -2,40 +2,35 @@
     "app-id": "org.gabmus.whatip",
     "command": "whatip",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.38",
+    "runtime-version": "40",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--share=network",
         "--socket=wayland",
         "--socket=system-bus"
     ],
     "modules": [
         {
-            "name": "libhandy",
+            "name": "libadwaita",
             "buildsystem": "meson",
             "config-opts": [
-                "--buildtype=release"
+                "-Dexamples=false",
+                "-Dtests=false"
             ],
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libhandy",
-                    "tag": "1.0.0"
+                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "commit": "a12ac7ad8b95569ab3671870a7e37444441824fb"
                 }
             ]
         },
         {
             "name": "python-idna",
             "buildsystem": "simple",
-            "ensure-writable": [
-                "/lib/python*/site-packages/easy-install.pth",
-                "/lib/python*/site-packages/setuptools.pth",
-                "/app/lib/python*/site-packages/easy-install.pth",
-                "/app/lib/python*/site-packages/setuptools.pth"
-            ],
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
@@ -43,26 +38,14 @@
                 {
                     "type": "git",
                     "url": "https://github.com/kjd/idna",
-                    "tag": "v2.9",
-                    "commit": "1233a730bc26811b5ae65c9ca9d5cc9ded2bdf9b"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/if not platform_/if not dirs/' setup.py"
-                    ]
+                    "tag": "v3.1",
+                    "commit": "8ba8151b72ea62cff3e37d431779063332678ade"
                 }
             ]
         },
         {
             "name": "python-certifi",
             "buildsystem": "simple",
-            "ensure-writable": [
-                "/lib/python*/site-packages/easy-install.pth",
-                "/lib/python*/site-packages/setuptools.pth",
-                "/app/lib/python*/site-packages/easy-install.pth",
-                "/app/lib/python*/site-packages/setuptools.pth"
-            ],
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
@@ -70,26 +53,14 @@
                 {
                     "type": "git",
                     "url": "https://github.com/certifi/python-certifi",
-                    "tag": "2019.11.28",
-                    "commit": "21abb9b9bbf4c0cfecf652fadafee3eb9615d553"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/if not platform_/if not dirs/' setup.py"
-                    ]
+                    "tag": "2020.12.05",
+                    "commit": "45a64658872a94a83c4b70fce02a96f0f29895e6"
                 }
             ]
         },
         {
             "name": "python-chardet",
             "buildsystem": "simple",
-            "ensure-writable": [
-                "/lib/python*/site-packages/easy-install.pth",
-                "/lib/python*/site-packages/setuptools.pth",
-                "/app/lib/python*/site-packages/easy-install.pth",
-                "/app/lib/python*/site-packages/setuptools.pth"
-            ],
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
@@ -97,26 +68,14 @@
                 {
                     "type": "git",
                     "url": "https://github.com/chardet/chardet",
-                    "tag": "3.0.4",
-                    "commit": "9b8c5c2fb118d76c6beeab9affd01c332732a530"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/if not platform_/if not dirs/' setup.py"
-                    ]
+                    "tag": "4.0.0",
+                    "commit": "a808ed1c945293c0edeeda3a360abfa2a0b25a20"
                 }
             ]
         },
         {
             "name": "python-urllib3",
             "buildsystem": "simple",
-            "ensure-writable": [
-                "/lib/python*/site-packages/easy-install.pth",
-                "/lib/python*/site-packages/setuptools.pth",
-                "/app/lib/python*/site-packages/easy-install.pth",
-                "/app/lib/python*/site-packages/setuptools.pth"
-            ],
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
@@ -124,75 +83,37 @@
                 {
                     "type": "git",
                     "url": "https://github.com/urllib3/urllib3",
-                    "tag": "1.25.8",
-                    "commit": "2a57bc5758075a9248cc0d87f66a2ff678338478"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/if not platform_/if not dirs/' setup.py"
-                    ]
+                    "tag": "1.26.4",
+                    "commit": "a8913042b676c510e94fc2b097f6b514ae11a537"
                 }
             ]
         },
         {
             "name": "python-requests",
             "buildsystem": "simple",
-            "ensure-writable": [
-                "/lib/python*/site-packages/easy-install.pth",
-                "/lib/python*/site-packages/setuptools.pth",
-                "/app/lib/python*/site-packages/easy-install.pth",
-                "/app/lib/python*/site-packages/setuptools.pth"
-            ],
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/psf/requests/archive/v2.23.0.tar.gz",
-                    "sha256": "bf063ded6c5c3f238f89189a791df4a22270d1ccd88b1a21687ecb6a9c6b1335"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/if not platform_/if not dirs/' setup.py"
-                    ]
+                    "url": "https://github.com/psf/requests/archive/v2.25.1.tar.gz",
+                    "sha256": "03b192fad682a33964df331d35f90918b1940c89f6c5bcb10060be688ba50315"
                 }
             ]
         },
         {
             "name": "python-netaddr",
             "buildsystem": "simple",
-            "build-options": {
-                "arch": {
-                    "arm": {
-                        "env": {
-                            "MAX_CONCURRENCY": "1"
-                        }
-                    }
-                }
-            },
-            "ensure-writable": [
-                "/lib/python*/site-packages/easy-install.pth",
-                "/lib/python*/site-packages/setuptools.pth",
-                "/app/lib/python*/site-packages/easy-install.pth",
-                "/app/lib/python*/site-packages/setuptools.pth"
-            ],
             "build-commands": [
                 "python3 setup.py install --prefix=/app --root=/"
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://files.pythonhosted.org/packages/0c/13/7cbb180b52201c07c796243eeff4c256b053656da5cfe3916c3f5b57b3a0/netaddr-0.7.19.tar.gz",
-                    "sha256": "38aeec7cdd035081d3a4c306394b19d677623bf76fa0913f6695127c7753aefd"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/if not platform_/if not dirs/' setup.py"
-                    ]
+                    "type": "git",
+                    "url": "https://github.com/netaddr/netaddr",
+                    "tag": "0.8.0",
+                    "commit": "0d5318c21c7af682c842e01177fee7247416b9a3"
                 }
             ]
         },
@@ -207,8 +128,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.5.0.tar.xz",
-                    "sha256": "bac543435cac208a11db44c9cc8e35aa902befef8750594654ee71941c388f7b"
+                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.9.0.tar.xz",
+                    "sha256": "a25dac94bcdcf2f73316c7f812115ea7a5710580bad892b08a83d00c6b33dacf"
                 }
             ]
         },
@@ -240,8 +161,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/iputils/iputils/archive/s20190709.tar.gz",
-                    "sha256": "a15720dd741d7538dd2645f9f516d193636ae4300ff7dbc8bfca757bf166490a"
+                    "url": "https://github.com/iputils/iputils/archive/refs/tags/20210202.tar.gz",
+                    "sha256": "3f557ecfd2ace873801231d2c1f42de73ced9fbc1ef3a438d847688b5fb0e8ab"
                 }
             ]
         },
@@ -305,10 +226,9 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
-                    "tag": "0.3"
+                    "tag": "1.0"
                 }
             ]
         }
     ]
 }
-
