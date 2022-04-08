@@ -12,6 +12,9 @@
         "--socket=wayland",
         "--socket=system-bus"
     ],
+    "cleanup": [
+        "/usr"
+    ],
     "modules": [
         "python-deps.json",
         {
