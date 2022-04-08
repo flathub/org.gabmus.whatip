@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.whatip",
     "command": "whatip",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "40",
+    "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -13,107 +13,16 @@
         "--socket=system-bus"
     ],
     "modules": [
+        "python-deps.json",
         {
-            "name": "libadwaita",
+            "name": "blueprint-compiler",
             "buildsystem": "meson",
-            "config-opts": [
-                "-Dexamples=false",
-                "-Dtests=false"
-            ],
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
-                    "commit": "a12ac7ad8b95569ab3671870a7e37444441824fb"
-                }
-            ]
-        },
-        {
-            "name": "python-idna",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/kjd/idna",
-                    "tag": "v3.1",
-                    "commit": "8ba8151b72ea62cff3e37d431779063332678ade"
-                }
-            ]
-        },
-        {
-            "name": "python-certifi",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/certifi/python-certifi",
-                    "tag": "2020.12.05",
-                    "commit": "45a64658872a94a83c4b70fce02a96f0f29895e6"
-                }
-            ]
-        },
-        {
-            "name": "python-chardet",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/chardet/chardet",
-                    "tag": "4.0.0",
-                    "commit": "a808ed1c945293c0edeeda3a360abfa2a0b25a20"
-                }
-            ]
-        },
-        {
-            "name": "python-urllib3",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/urllib3/urllib3",
-                    "tag": "1.26.4",
-                    "commit": "a8913042b676c510e94fc2b097f6b514ae11a537"
-                }
-            ]
-        },
-        {
-            "name": "python-requests",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/psf/requests/archive/v2.25.1.tar.gz",
-                    "sha256": "03b192fad682a33964df331d35f90918b1940c89f6c5bcb10060be688ba50315"
-                }
-            ]
-        },
-        {
-            "name": "python-netaddr",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 setup.py install --prefix=/app --root=/"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/netaddr/netaddr",
-                    "tag": "0.8.0",
-                    "commit": "0d5318c21c7af682c842e01177fee7247416b9a3"
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "branch": "main",
+                    "commit": "4cf966eafa433fc8e77b3ae3c5f5622290e68bc4"
                 }
             ]
         },
@@ -128,8 +37,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.9.0.tar.xz",
-                    "sha256": "a25dac94bcdcf2f73316c7f812115ea7a5710580bad892b08a83d00c6b33dacf"
+                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.17.0.tar.xz",
+                    "sha256": "6e384f1b42c75e1a9daac57866da37dcff909090ba86eb25a6e764da7893660e"
                 }
             ]
         },
@@ -161,8 +70,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/iputils/iputils/archive/refs/tags/20210202.tar.gz",
-                    "sha256": "3f557ecfd2ace873801231d2c1f42de73ced9fbc1ef3a438d847688b5fb0e8ab"
+                    "url": "https://github.com/iputils/iputils/archive/refs/tags/20211215.tar.gz",
+                    "sha256": "b6f67fc705490673ff4471d006221b4a2f1b1180b929d9fefd771352621ccedf"
                 }
             ]
         },
@@ -226,10 +135,9 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
-                    "tag": "1.0"
+                    "tag": "1.1"
                 }
             ]
         }
     ]
 }
-
