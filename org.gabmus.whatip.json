@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.whatip",
     "command": "whatip",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "43",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -10,7 +10,7 @@
         "--socket=fallback-x11",
         "--share=network",
         "--socket=wayland",
-        "--socket=system-bus"
+        "--system-talk-name=org.freedesktop.Avahi"
     ],
     "cleanup": [
         "/usr"
@@ -24,7 +24,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "commit": "4cf966eafa433fc8e77b3ae3c5f5622290e68bc4"
+                    "commit": "9adcab2d225fd6435edc85c72a0b67e33880e00b"
                 }
             ]
         },
@@ -39,8 +39,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.17.0.tar.xz",
-                    "sha256": "6e384f1b42c75e1a9daac57866da37dcff909090ba86eb25a6e764da7893660e"
+                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.19.0.tar.xz",
+                    "sha256": "26b7a34d6a7fd2f7a42e2b39c5a90cb61bac522d1096067ffeb195e5693d7791"
                 }
             ]
         },
@@ -52,37 +52,26 @@
                 "-DUSE_IDN=false",
                 "-DBUILD_ARPING=false",
                 "-DBUILD_CLOCKDIFF=false",
-                "-DBUILD_RARPD=false",
-                "-DBUILD_RDISC=false",
-                "-DENABLE_RDISC_SERVER=false",
-                "-DBUILD_TFTPD=false",
                 "-DBUILD_TRACEPATH=false",
-                "-DBUILD_TRACEROUTE6=false",
-                "-DBUILD_NINFOD=false",
-                "-DNINFOD_MESSAGES=false",
                 "-DBUILD_MANS=false",
                 "-DBUILD_HTML_MANS=false",
                 "-DNO_SETCAP_OR_SUID=false",
                 "-DSETCAP_OR_SUID_ARPING=false",
                 "-DSETCAP_OR_SUID_CLOCKDIFF=false",
                 "-DSETCAP_OR_SUID_PING=false",
-                "-DSETCAP_OR_SUID_TRACEROUTE6=false",
                 "-DUSE_GETTEXT=false"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/iputils/iputils/archive/refs/tags/20211215.tar.gz",
-                    "sha256": "b6f67fc705490673ff4471d006221b4a2f1b1180b929d9fefd771352621ccedf"
+                    "url": "https://github.com/iputils/iputils/archive/refs/tags/20221126.tar.gz",
+                    "sha256": "745ea711fe06d5c57d470d21acce3c3ab866eb6afb69379a16c6d60b89bd4311"
                 }
             ]
         },
         {
             "name": "libdaemon",
             "buildsystem": "autotools",
-            "config-opts": [
-                "--prefix=/app"
-            ],
             "sources": [
                 {
                     "type": "archive",
@@ -100,9 +89,6 @@
         {
             "name": "libevent",
             "buildsystem": "autotools",
-            "config-opts": [
-                "--prefix=/app"
-            ],
             "sources": [
                 {
                     "type": "git",
@@ -115,7 +101,6 @@
             "name": "avahi",
             "buildsystem": "autotools",
             "config-opts": [
-                "--prefix=/app",
                 "--with-distro=none",
                 "--disable-gtk3",
                 "--disable-mono",
