@@ -2,15 +2,14 @@
     "app-id": "org.gabmus.whatip",
     "command": "whatip",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "44",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
-        "--socket=fallback-x11",
         "--share=network",
         "--socket=wayland",
-        "--socket=system-bus"
+        "--socket=fallback-x11"
     ],
     "cleanup": [
         "/usr"
@@ -24,7 +23,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "commit": "4cf966eafa433fc8e77b3ae3c5f5622290e68bc4"
+                    "tag": "v0.6.0"
                 }
             ]
         },
@@ -39,8 +38,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.17.0.tar.xz",
-                    "sha256": "6e384f1b42c75e1a9daac57866da37dcff909090ba86eb25a6e764da7893660e"
+                    "url": "https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.2.0.tar.xz",
+                    "sha256": "4d72730200ec5b2aabaa1a2f20553c6748292f065d9a154c7d5e22559df9fd62"
                 }
             ]
         },
@@ -55,9 +54,7 @@
                 "-DBUILD_RARPD=false",
                 "-DBUILD_RDISC=false",
                 "-DENABLE_RDISC_SERVER=false",
-                "-DBUILD_TFTPD=false",
                 "-DBUILD_TRACEPATH=false",
-                "-DBUILD_TRACEROUTE6=false",
                 "-DBUILD_NINFOD=false",
                 "-DNINFOD_MESSAGES=false",
                 "-DBUILD_MANS=false",
@@ -66,7 +63,6 @@
                 "-DSETCAP_OR_SUID_ARPING=false",
                 "-DSETCAP_OR_SUID_CLOCKDIFF=false",
                 "-DSETCAP_OR_SUID_PING=false",
-                "-DSETCAP_OR_SUID_TRACEROUTE6=false",
                 "-DUSE_GETTEXT=false"
             ],
             "sources": [
@@ -80,9 +76,6 @@
         {
             "name": "libdaemon",
             "buildsystem": "autotools",
-            "config-opts": [
-                "--prefix=/app"
-            ],
             "sources": [
                 {
                     "type": "archive",
@@ -100,9 +93,6 @@
         {
             "name": "libevent",
             "buildsystem": "autotools",
-            "config-opts": [
-                "--prefix=/app"
-            ],
             "sources": [
                 {
                     "type": "git",
@@ -115,7 +105,6 @@
             "name": "avahi",
             "buildsystem": "autotools",
             "config-opts": [
-                "--prefix=/app",
                 "--with-distro=none",
                 "--disable-gtk3",
                 "--disable-mono",
@@ -135,7 +124,6 @@
         {
             "name": "whatip",
             "buildsystem": "meson",
-            "builddir": true,
             "config-opts": [
                 "--buildtype=release"
             ],
@@ -143,7 +131,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
-                    "tag": "1.1"
+                    "tag": "1.2"
                 }
             ]
         }
