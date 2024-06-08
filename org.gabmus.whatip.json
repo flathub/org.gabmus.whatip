@@ -141,6 +141,10 @@
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
                     "tag": "1.2"
+                },
+                {
+                    "type": "patch",
+                    "path": "fix_appdata.patch"
                 }
             ]
         }
