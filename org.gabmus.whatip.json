@@ -12,7 +12,13 @@
         "--socket=fallback-x11"
     ],
     "cleanup": [
-        "/usr"
+        "/include",
+        "/lib/pkgconfig",
+        "/share/doc",
+        "/share/man",
+        "/usr",
+        "*.la",
+        "*.a"
     ],
     "modules": [
         "python-deps.json",
