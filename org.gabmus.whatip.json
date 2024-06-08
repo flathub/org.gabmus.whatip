@@ -32,11 +32,11 @@
         },
         {
             "name": "iproute2",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./configure",
-                "make",
-                "make PREFIX=\"/app\" DESTDIR=\"/app\" SBINDIR=\"/bin\" install"
+            "buildsystem": "autotools",
+            "make-install-args": [
+                "PREFIX=${FLATPAK_DEST}",
+                "SBINDIR=${FLATPAK_DEST}/bin",
+                "CONFDIR=${FLATPAK_DEST}/etc/iproute2"
             ],
             "sources": [
                 {
