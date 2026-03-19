@@ -2,7 +2,7 @@
     "app-id": "org.gabmus.whatip",
     "command": "whatip",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "48",
+    "runtime-version": "50",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -13,29 +13,17 @@
     ],
     "cleanup": [
         "/include",
+        "/lib/girepository-1.0",
         "/lib/pkgconfig",
+        "/share/bash-completion",
         "/share/doc",
+        "/share/gir-1.0",
         "/share/man",
-        "/usr",
         "*.la",
         "*.a"
     ],
     "modules": [
         "python-deps.json",
-        {
-            "name": "blueprint-compiler",
-            "buildsystem": "meson",
-            "cleanup": [
-                "*"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag": "v0.16.0"
-                }
-            ]
-        },
         {
             "name": "iproute2",
             "buildsystem": "autotools",
@@ -104,9 +92,9 @@
             "buildsystem": "autotools",
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/libevent/libevent",
-                    "tag": "release-2.1.12-stable"
+                    "type": "archive",
+                    "url": "https://github.com/libevent/libevent/archive/refs/tags/release-2.1.12-stable.tar.gz",
+                    "sha256": "7180a979aaa7000e1264da484f712d403fcf7679b1e9212c4e3d09f5c93efc24"
                 }
             ]
         },
@@ -124,9 +112,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/lathiat/avahi",
-                    "tag": "v0.8"
+                    "type": "archive",
+                    "url": "https://github.com/avahi/avahi/archive/refs/tags/v0.8.tar.gz",
+                    "sha256": "c15e750ef7c6df595fb5f2ce10cac0fee2353649600e6919ad08ae8871e4945f"
                 }
             ]
         },
