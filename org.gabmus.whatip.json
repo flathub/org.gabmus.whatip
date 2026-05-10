@@ -128,7 +128,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GabMus/whatip",
-                    "tag": "1.2"
+                    "tag": "1.2",
+                    "commit": "678ba7e5b56ae4999446eac9e18f618124543c97"
                 },
                 {
                     "type": "patch",
