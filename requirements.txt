@@ -1,0 +1,9 @@
+# Use the following command to regenerate the Python modules
+# flatpak-pip-generator -r requirements.txt -o python-deps --runtime=org.gnome.Sdk//51
+
+certifi
+charset-normalizer
+idna
+netaddr
+requests
+urllib3
